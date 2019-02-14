@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ua.com.test.entity.Alexandr_Orders" table="orders">
+        <id name="id_orders" type="string" column="id_orders"/>
+        <property name="name" column="name" type="string"/>
+        <property name="description" column="description" type="string"/>
+        <property name="sum" column="sum" type="double"/>
+        <property name="counterparty_uuid" column="counterparty_uuid" type="string"/>
+        <property name="moment" column="moment" type="string"/>
+    </class>
+</hibernate-mapping>
