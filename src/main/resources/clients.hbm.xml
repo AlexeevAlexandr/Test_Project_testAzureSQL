@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="ua.com.test.entity.Alexandr_Clients" table="clients">
+    <class name="ua.com.application.entity.Alexandr_Clients" table="clients">
         <id name="id_clients" type="string" column="id_clients"/>
         <property name="name" column="name" type="string"/>
     </class>

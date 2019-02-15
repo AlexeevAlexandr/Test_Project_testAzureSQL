@@ -1,10 +1,10 @@
-package ua.com.test.service;
+package ua.com.application.service;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import ua.com.test.dao.OrdersDAO;
+import ua.com.application.dao.OrdersDAO;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

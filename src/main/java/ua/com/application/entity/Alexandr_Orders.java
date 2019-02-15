@@ -1,4 +1,4 @@
-package ua.com.test.entity;
+package ua.com.application.entity;
 
 import javax.persistence.*;
 
@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Table(name = "orders")
 public class Alexandr_Orders {
 
-    @Column(name = "id_orders")
+    @Column(name = "id_orders", nullable = false)
     private String id_orders;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "description")
@@ -24,8 +24,8 @@ public class Alexandr_Orders {
     @Column(name = "moment")
     private String moment;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "counterparty_uuid")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "counterparty_uuid", nullable = false)
     private Alexandr_Clients clients;
 
     public Alexandr_Orders(){}
@@ -93,5 +93,15 @@ public class Alexandr_Orders {
 
     public void setClients(Alexandr_Clients clients) {
         this.clients = clients;
+    }
+
+    @Override
+    public String toString(){
+        return  "id: " + getId_orders() + "\n" +
+                "name: " + getName() + "\n" +
+                "description: " + getDescription() + "\n" +
+                "sum: " + getSum() + "\n" +
+                "counterparty_uuid: " + getCounterparty_uuid() + "\n" +
+                "moment: " + getMoment() + "\n";
     }
 }

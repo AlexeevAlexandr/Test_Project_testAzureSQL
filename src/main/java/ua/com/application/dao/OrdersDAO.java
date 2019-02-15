@@ -1,11 +1,11 @@
-package ua.com.test.dao;
+package ua.com.application.dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import ua.com.test.entity.Alexandr_Orders;
+import ua.com.application.entity.Alexandr_Orders;
 
 import java.util.List;
 
@@ -39,5 +39,18 @@ public class OrdersDAO {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public List getOrdersByNameOfClient(String clientName){
+        try(SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            Session session = sessionFactory.openSession()){
+
+            return session.createQuery("FROM Alexandr_Orders WHERE counterparty_uuid=" +
+                    "(SELECT id_clients FROM Alexandr_Clients WHERE name='" + clientName + "')").list();
+
+        }catch (HibernateException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

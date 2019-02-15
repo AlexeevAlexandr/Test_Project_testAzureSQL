@@ -1,6 +1,6 @@
-package ua.com.test;
+package ua.com.application;
 
-import ua.com.test.service.Commands;
+import ua.com.application.service.Commands;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,20 +1,20 @@
-package ua.com.test.entity;
+package ua.com.application.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "clients")
 public class Alexandr_Clients  {
 
-    @Column(name = "id_clients")
+    @Column(name = "id_clients", nullable = false)
     private String id_clients;
 
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "clients", fetch = FetchType.EAGER)
-    private Collection<Alexandr_Orders> orders;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clients")
+    private Set<Alexandr_Orders> orders;
 
     public Alexandr_Clients() {}
 
@@ -39,11 +39,17 @@ public class Alexandr_Clients  {
         this.name = name;
     }
 
-    public Collection<Alexandr_Orders> getOrders() {
+    public Set<Alexandr_Orders> getOrders() {
         return orders;
     }
 
-    public void setOrders(Collection<Alexandr_Orders> orders) {
+    public void setOrders(Set<Alexandr_Orders> orders) {
         this.orders = orders;
+    }
+
+    @Override
+    public String toString(){
+        return  "id: " + getId_clients() + "\n" +
+                "name: " + getName();
     }
 }
