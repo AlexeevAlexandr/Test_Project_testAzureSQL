@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import ua.com.application.entity.Alexandr_Orders;
+import ua.com.application.entity.Orders;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class OrdersDAO {
             Session session = sessionFactory.openSession()){
 
             transaction = session.beginTransaction();
-            Alexandr_Orders orders = new Alexandr_Orders(id,name,description,sum,counterparty_uuid,moment);
+            Orders orders = new Orders(id,name,description,sum,counterparty_uuid,moment);
             session.save(orders);
             transaction.commit();
 
@@ -31,22 +31,21 @@ public class OrdersDAO {
         try(SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             Session session = sessionFactory.openSession()){
 
-            List list = session.createQuery("SELECT MAX(name) FROM Alexandr_Orders").list();
+            List list = session.createQuery("SELECT MAX(name) FROM Orders").list();
             String string = list.get(0).toString();
             return Integer.parseInt(string);
 
-        }catch (HibernateException e){
-            e.printStackTrace();
+        }catch (Exception e){
+            return 0;
         }
-        return 0;
     }
 
     public List getOrdersByNameOfClient(String clientName){
         try(SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             Session session = sessionFactory.openSession()){
 
-            return session.createQuery("FROM Alexandr_Orders WHERE counterparty_uuid=" +
-                    "(SELECT id_clients FROM Alexandr_Clients WHERE name='" + clientName + "')").list();
+            return session.createQuery("FROM Orders WHERE counterparty_uuid=" +
+                    "(SELECT id_clients FROM Clients WHERE name='" + clientName + "')").list();
 
         }catch (HibernateException e){
             e.printStackTrace();

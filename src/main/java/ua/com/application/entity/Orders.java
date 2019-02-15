@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "orders")
-public class Alexandr_Orders {
+public class Orders {
 
     @Column(name = "id_orders", nullable = false)
     private String id_orders;
@@ -26,11 +26,11 @@ public class Alexandr_Orders {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "counterparty_uuid", nullable = false)
-    private Alexandr_Clients clients;
+    private Clients clients;
 
-    public Alexandr_Orders(){}
+    public Orders(){}
 
-    public Alexandr_Orders(String id_orders, String name, String description, double sum, String counterparty_uuid, String moment) {
+    public Orders(String id_orders, String name, String description, double sum, String counterparty_uuid, String moment) {
         this.id_orders = id_orders;
         this.name = name;
         this.description = description;
@@ -87,11 +87,11 @@ public class Alexandr_Orders {
         this.moment = moment;
     }
 
-    public Alexandr_Clients getClients() {
+    public Clients getClients() {
         return clients;
     }
 
-    public void setClients(Alexandr_Clients clients) {
+    public void setClients(Clients clients) {
         this.clients = clients;
     }
 

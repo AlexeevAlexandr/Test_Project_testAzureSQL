@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "clients")
-public class Alexandr_Clients  {
+public class Clients {
 
     @Column(name = "id_clients", nullable = false)
     private String id_clients;
@@ -14,11 +14,11 @@ public class Alexandr_Clients  {
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "clients")
-    private Set<Alexandr_Orders> orders;
+    private Set<Orders> orders;
 
-    public Alexandr_Clients() {}
+    public Clients() {}
 
-    public Alexandr_Clients(String id_clients, String name) {
+    public Clients(String id_clients, String name) {
         this.id_clients = id_clients;
         this.name = name;
     }
@@ -39,11 +39,11 @@ public class Alexandr_Clients  {
         this.name = name;
     }
 
-    public Set<Alexandr_Orders> getOrders() {
+    public Set<Orders> getOrders() {
         return orders;
     }
 
-    public void setOrders(Set<Alexandr_Orders> orders) {
+    public void setOrders(Set<Orders> orders) {
         this.orders = orders;
     }
 

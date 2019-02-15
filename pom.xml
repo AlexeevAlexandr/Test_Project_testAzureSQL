@@ -7,6 +7,9 @@
     <groupId>moysklad_test</groupId>
     <artifactId>moysklad_test</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <build>
         <plugins>
             <plugin>
