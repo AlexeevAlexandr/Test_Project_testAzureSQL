@@ -56,4 +56,15 @@ public class OrdersDAO {
         }
         return null;
     }
+
+    public List getAllOrdersFromDatabase(){
+        try(SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            Session session = sessionFactory.openSession()){
+
+            return session.createQuery("FROM Orders").list();
+        }catch (HibernateException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -4,6 +4,8 @@ import org.junit.Test;
 import ua.com.application.Main;
 import ua.com.application.dao.OrdersDAO;
 
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
 
 public class Tests {
@@ -32,5 +34,14 @@ public class Tests {
     @Test
     public void main() {
         Main.main(new String[] {});
+    }
+
+    @Test
+    public void test_getAllOrdersFromDatabase() {
+        List list = new OrdersDAO().getAllOrdersFromDatabase();
+        for (Object a : list) {
+            System.out.println(a);
+            System.out.println();
+        }
     }
 }
