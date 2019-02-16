@@ -101,7 +101,7 @@ public class Commands {
                 String[] separatesCounterparty_uuid = uuidHref.split("=");
                 String counterparty_uuid = separatesCounterparty_uuid[1];
 
-                ordersDAO.writeOrders(id, name, description, sum, counterparty_uuid, moment);
+                ordersDAO.writeNewOrdersToDatabase(id, name, description, sum, counterparty_uuid, moment);
                 counterAddedOrders++;
             }
         }

@@ -13,7 +13,7 @@ public class OrdersDAO {
 
     private Transaction transaction = null;
 
-    public void writeOrders(String id, String name, String description, double sum, String counterparty_uuid, String moment){
+    public void writeNewOrdersToDatabase(String id, String name, String description, double sum, String counterparty_uuid, String moment){
         try(SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             Session session = sessionFactory.openSession()){
 
