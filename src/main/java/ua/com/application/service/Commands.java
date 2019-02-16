@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import ua.com.application.dao.OrdersDAO;
+import ua.com.application.entity.Orders;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,6 +13,7 @@ import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.PasswordAuthentication;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -81,6 +83,7 @@ public class Commands {
         Commands command = new Commands();
         JSONArray jsonArray =  command.getJSONArray();
 
+        ArrayList<Orders> orders = new ArrayList<>();
         int counterAddedOrders = 0;
         for(Object object : Objects.requireNonNull(jsonArray)) {
             JSONObject jsonObject = (JSONObject) object;
@@ -103,8 +106,16 @@ public class Commands {
 
                 ordersDAO.writeNewOrdersToDatabase(id, name, description, sum, counterparty_uuid, moment);
                 counterAddedOrders++;
+
+                orders.add(new Orders(id, name, description, sum, counterparty_uuid, moment));
             }
         }
-        System.out.println((counterAddedOrders == 0) ? "No new orders" : "You have " + counterAddedOrders + " new orders");
+        System.out.println((counterAddedOrders == 0) ? "No new orders" : "You have " + counterAddedOrders + " new orders\n");
+
+        //if there are new orders, prints them
+        for (Orders name : orders) {
+            System.out.println(name);
+
+        }
     }
 }

@@ -44,4 +44,17 @@ public class Tests {
             System.out.println();
         }
     }
+
+    @Test
+    public void test_getOrderByNameOfOrder() {
+        String expected = "id: 4d802cc6-2891-11e9-9107-5048001bc000\n" +
+                "name: 00001\n" +
+                "description: \n" +
+                "sum: 300000.0\n" +
+                "counterparty_uuid: ca4f41bb-288c-11e9-9ff4-31500069753f\n" +
+                "moment: 2019-02-04 18:26:00";
+        String actual = new OrdersDAO().getOrderByNameOfOrder("00001").get(0).toString().trim();
+
+        assertEquals(expected,actual);
+    }
 }
