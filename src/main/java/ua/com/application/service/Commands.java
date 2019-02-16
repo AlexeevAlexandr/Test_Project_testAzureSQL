@@ -76,7 +76,7 @@ public class Commands {
 
     public void checkNewOrders() {
         OrdersDAO ordersDAO = new OrdersDAO();
-        int lastNameFromDatabase = ordersDAO.getLastNameOfOrderFromDatabase();
+        int lastOrderNameFromDatabase = ordersDAO.getLastNameOfOrderFromDatabase();
 
         Commands command = new Commands();
         JSONArray jsonArray =  command.getJSONArray();
@@ -87,7 +87,7 @@ public class Commands {
 
             int jsonOrderName = Integer.parseInt(jsonObject.get("name").toString());
 
-            if (jsonOrderName > lastNameFromDatabase) {
+            if (jsonOrderName > lastOrderNameFromDatabase) {
                 String id = jsonObject.get("id").toString();
                 double sum = Double.parseDouble(jsonObject.get("sum").toString());
                 String moment = jsonObject.get("moment").toString();
