@@ -1,6 +1,7 @@
 package ua.com.test;
 
 import org.junit.Test;
+import ua.com.application.Main;
 import ua.com.application.dao.OrdersDAO;
 
 import static junit.framework.Assert.assertEquals;
@@ -28,5 +29,8 @@ public class Tests {
         assertEquals(expected, actual);
     }
 
-
+    @Test
+    public void main() {
+        Main.main(new String[] {});
+    }
 }
