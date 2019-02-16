@@ -12,7 +12,7 @@ public class Tests {
         String expected = "" +
                 "[id: 6cdcf105-2891-11e9-9ff4-34e8001bea86\n" +
                 "name: 00003\n" +
-                "description: null\n" +
+                "description: \n" +
                 "sum: 300000.0\n" +
                 "counterparty_uuid: caa9e602-288c-11e9-9ff4-3150006975d1\n" +
                 "moment: 2019-02-04 18:27:00\n" +
@@ -27,4 +27,6 @@ public class Tests {
 
         assertEquals(expected, actual);
     }
+
+
 }

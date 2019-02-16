@@ -35,9 +35,12 @@ public class OrdersDAO {
             String string = list.get(0).toString();
             return Integer.parseInt(string);
 
-        }catch (Exception e){
+        }catch (NullPointerException e){
             return 0;
+        }catch (HibernateException e){
+            e.printStackTrace();
         }
+        return 0;
     }
 
     public List getOrdersByNameOfClient(String clientName){
