@@ -110,6 +110,10 @@ public class Commands {
                 newOrders.add(new Orders(id, name, description, sum, counterparty_uuid, moment));
             }
         }
+        printNewOrders(newOrders, counterAddedOrders);
+    }
+
+    private void printNewOrders(ArrayList<Orders> newOrders, int counterAddedOrders) {
         System.out.println((counterAddedOrders == 0) ? "No new orders" : "You have " + counterAddedOrders + " new orders\n");
 
         //if there are new orders, prints them
