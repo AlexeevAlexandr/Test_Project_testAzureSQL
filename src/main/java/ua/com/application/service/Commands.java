@@ -83,7 +83,7 @@ public class Commands {
         Commands command = new Commands();
         JSONArray jsonArray =  command.getJSONArray();
 
-        ArrayList<Orders> orders = new ArrayList<>();
+        ArrayList<Orders> newOrders = new ArrayList<>();
         int counterAddedOrders = 0;
         for(Object object : Objects.requireNonNull(jsonArray)) {
             JSONObject jsonObject = (JSONObject) object;
@@ -107,14 +107,14 @@ public class Commands {
                 ordersDAO.writeNewOrdersToDatabase(id, name, description, sum, counterparty_uuid, moment);
                 counterAddedOrders++;
 
-                orders.add(new Orders(id, name, description, sum, counterparty_uuid, moment));
+                newOrders.add(new Orders(id, name, description, sum, counterparty_uuid, moment));
             }
         }
         System.out.println((counterAddedOrders == 0) ? "No new orders" : "You have " + counterAddedOrders + " new orders\n");
 
         //if there are new orders, prints them
-        for (Orders name : orders) {
-            System.out.println(name);
+        for (Orders order : newOrders) {
+            System.out.println(order);
 
         }
     }
